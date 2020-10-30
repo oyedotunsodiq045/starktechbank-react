@@ -246,20 +246,21 @@ const getMe = asyncHandler(async (req, res, next) => {
 // @route   PUT /api/v1/auth/updatedetails
 // @access  Private
 const updateDetails = asyncHandler(async (req, res, next) => {
-	const fieldsToUpdate = {
-		username: req.body.username,
-		firstname: req.body.firstname,
-		lastname: req.body.lastname,
-		email: req.body.email,
-		phone: req.body.phone,
-		password: req.body.password,
-	};
+	const uuser = await User.findById(req.user.id)
 
-	const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
-		new: true,
-		runValidators: true,
-	});
+	if (uuser) {
+		uuser.username = req.body.username || uuser.username
+		uuser.firstname = req.body.firstname || uuser.firstname
+		uuser.lastname = req.body.lastname || uuser.lastname
+		uuser.email = req.body.email || uuser.email
+		uuser.phone = req.body.phone || uuser.phone
+		if (req.body.password) {
+			uuser.password = req.body.password || uuser.password
+		}
+	}
 
+	const user = await uuser.save()
+	
 	res.status(200).json({
 		success: true,
 		data: user,
