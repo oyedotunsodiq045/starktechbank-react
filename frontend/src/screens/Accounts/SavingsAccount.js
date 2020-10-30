@@ -1,20 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Table } from 'react-bootstrap'
 import SavingsBalanceCard from "../../components/utils/SavingsBalanceCard";
-import { listSavingsAccounts } from '../../actions/savingsAccountActions'
-import LoaderCard from '../../components/utils/LoaderCard';
-import MessageCard from '../../components/utils/MessageCard';
+// import { listSavingsAccounts } from '../../actions/savingsAccountActions'
+import LoaderCard from '../../components/utils/LoaderCard'
+import MessageCard from '../../components/utils/MessageCard'
+import { getUserDetails } from '../../actions/userActions'
 
-const SavingsAccount = () => {
+const SavingsAccount = ({ history }) => {
+  const [savingsAccountNumber, setSavingsAccountNumber] = useState('')
+  const [savingsAccountBalance, setSavingsAccountBalance] = useState('')
+
   const dispatch = useDispatch()
-  
-  const savingsAccountList = useSelector(state => state.savingsAccountList)
-  const { loading, error, savingsAccounts } = savingsAccountList
+
+  const userDetails = useSelector(state => state.userDetails)
+  const { loading, error, user } = userDetails
+
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
 
   useEffect(() => {
-    dispatch(listSavingsAccounts())
-  }, [dispatch])
+    if (!userInfo) {
+      history.push('/')
+    } else {
+      if (!user.data) {
+        dispatch(getUserDetails('me'))
+      } else {
+        setSavingsAccountNumber(user.data.savingsAccountId.savingsAccountNumber)
+        setSavingsAccountBalance(user.data.savingsAccountId.accountBalance)
+      }
+    }
+  }, [dispatch, history, userInfo, user])
 
   return (
     <>
@@ -25,9 +41,7 @@ const SavingsAccount = () => {
         ) : ( 
           <>
             <Row className="mt-5 mb-5 justify-content-end">
-              {savingsAccounts.map(savingsAccount => (
-                <SavingsBalanceCard savingsAccount={savingsAccount} />
-              ))}
+              <SavingsBalanceCard savingsAccountNumber={savingsAccountNumber} savingsAccountBalance={savingsAccountBalance}/>
             </Row>
             <Row>
               <Table striped bordered hover size="sm">
