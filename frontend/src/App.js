@@ -9,10 +9,8 @@ import ForgotPassword from './screens/Auth/ForgotPassword'
 import Profile from './screens/Auth/Profile'
 import SignIn from './screens/Auth/SignIn'
 import SignUp from './screens/Auth/SignUp'
-import PrimaryAccountDeposit from './screens/Transactions/Primary/Deposit'
-import PrimaryAccountWithdrawal from './screens/Transactions/Primary/Withdraw'
-import SavingsAccountDeposit from './screens/Transactions/Savings/Deposit'
-import SavingsAccountWithdrawal from './screens/Transactions/Savings/Withdraw'
+import Deposit from './screens/Transactions/Deposit'
+import Withdraw from './screens/Transactions/Withdraw'
 import Between from './screens/Transfer/Between'
 import To from './screens/Transfer/To'
 import Appointment from './screens/Appointment'
@@ -29,19 +27,17 @@ const App = () => {
 				<Container>
 					<Route path="/" component={SignIn} exact />
 					<Route path="/signup" component={SignUp} />
-					<Route path="/forgot-password" component={ForgotPassword} />
+					<Route path="/home" component={Home} />
 					<Route path="/profile" component={Profile} />
-					<Route path="/transactions/primary/deposit" component={PrimaryAccountDeposit} />
-					<Route path="/transactions/primary/withdraw" component={PrimaryAccountWithdrawal} />
-					<Route path="/transactions/savings/deposit" component={SavingsAccountDeposit} />
-					<Route path="/transactions/savings/withdraw" component={SavingsAccountWithdrawal} />
+					<Route path="/forgot-password" component={ForgotPassword} />
+					<Route path="/transactions/deposit" component={Deposit} />
+					<Route path="/transactions/withdraw" component={Withdraw} />
 					<Route path="/recipient" component={Recipient} />
 					<Route path="/account/primary" component={PrimaryAccount} />
 					<Route path="/account/savings" component={SavingsAccount} />
 					<Route path="/transfer/between" component={Between} />
 					<Route path="/transfer/to" component={To} />
 					<Route path="/appointment" component={Appointment} />
-					<Route path="/home" component={Home} />
 				</Container>
 			</main>
 			<Footer />

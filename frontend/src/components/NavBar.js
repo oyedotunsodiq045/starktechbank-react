@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 
 const NavBar = () => {
+	const dispatch = useDispatch()
+
+	const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+  
   return (
     <>
       <Navbar className="mt-5" bg="light" expand="lg" fixed="top">
@@ -29,20 +35,12 @@ const NavBar = () => {
 
               {/* Transaction */}
               <NavDropdown title="Transaction" id="basic-nav-dropdown">
-                <LinkContainer to="/transactions/primary/deposit">
-                  <NavDropdown.Item>Primary Deposit</NavDropdown.Item>
+                <LinkContainer to="/transactions/deposit">
+                  <NavDropdown.Item>Deposit</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Divider />
-                <LinkContainer to="/transactions/primary/withdraw">
-                 <NavDropdown.Item>Primary Withdrawal</NavDropdown.Item>
-                </LinkContainer>
-                <NavDropdown.Divider />
-                <LinkContainer to="/transactions/savings/deposit">
-                  <NavDropdown.Item>Savings Deposit</NavDropdown.Item>
-                </LinkContainer>
-                <NavDropdown.Divider />
-                <LinkContainer to="/transactions/savings/withdraw">
-                 <NavDropdown.Item>Savings Withdrawal</NavDropdown.Item>
+                <LinkContainer to="/transactions/withdraw">
+                 <NavDropdown.Item>Withdraw</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
 
@@ -75,15 +73,15 @@ const NavBar = () => {
             <Nav>
 
               {/* Profile */}
-              <NavDropdown title="Me" id="basic-nav-dropdown">
-                <LinkContainer to="/profile">
-                  <NavDropdown.Item>Profile</NavDropdown.Item>
-                </LinkContainer>
-                <NavDropdown.Divider />
-                <LinkContainer to="/logout">
-                 <NavDropdown.Item>Logout</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
+							{userInfo ? (
+                <NavDropdown title={userInfo.data.username} id="basic-nav-dropdown">
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+                ) :
+                <></>
+              }
             </Nav>
           </Navbar.Collapse>
 				</Container>

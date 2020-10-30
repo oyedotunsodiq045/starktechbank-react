@@ -8,4 +8,4 @@ const savingstransactions = [{
   "savingsAccountId": "5f7ef57ec3e0ad14e68f37a6"
 }]
 
-module.exports = savingstransactions
+export default savingstransactions

@@ -2,7 +2,7 @@ import React from 'react'
 // import { LinkContainer } from 'react-router-bootstrap'
 import { Card, Col, Row, ListGroup } from 'react-bootstrap'
 
-const SavingsBalanceCard = ({ savingsAccount }) => {
+const SavingsBalanceCard = ({ savingsAccountNumber, savingsAccountBalance }) => {
   return (
     <>
       <Col md="6">
@@ -19,36 +19,27 @@ const SavingsBalanceCard = ({ savingsAccount }) => {
           </Card.Header>
           {/* <Card.Body> */}
             <ListGroup variant='flush'>
-              <ListGroup.Item variant="info">
+              <ListGroup.Item variant="primary">
                 <Row>
                   <Col>
                     Account Number
                   </Col>
                   <Col className="d-flex justify-content-end">
-                    {savingsAccount.savingsAccountNumber}
+                    {savingsAccountNumber}
                   </Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item variant="info">
+              <ListGroup.Item variant="primary">
                 <Row>
                   <Col>
                     Account Balance
                   </Col>
                   <Col className="d-flex justify-content-end">
-                    {savingsAccount.accountBalance}
+                    {savingsAccountBalance}
                   </Col>
                 </Row>
               </ListGroup.Item>
             </ListGroup>
-            {/* <Row>
-              <Col>
-                View Details
-              </Col>
-              <Col className="d-flex justify-content-end">
-                <i className="fas fa-arrow-circle-right"></i>
-              </Col>
-            </Row> */}
-          {/* </Card.Body> */}
         </Card>
       </Col>
     </>

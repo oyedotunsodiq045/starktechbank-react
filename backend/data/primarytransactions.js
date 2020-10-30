@@ -8,4 +8,4 @@ const primarytransactions = [{
   "primaryAccountId": "5f7ef57ec3e0ad14e68f37a5"
 }]
 
-module.exports = primarytransactions
+export default primarytransactions

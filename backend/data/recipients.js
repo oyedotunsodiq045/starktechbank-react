@@ -21,4 +21,4 @@ const recipients = [{
   "userRef": "5f7ef57ec3e0ad14e68f37a4"
 }]
 
-module.exports = recipients
+export default recipients

@@ -1,9 +1,10 @@
 import React from 'react'
+import TransactionCard from '../../components/utils/TransactionCard'
 
 const Deposit = () => {
   return (
     <>
-      <h1>Deposit</h1>
+      <TransactionCard />
     </>
   )
 }
