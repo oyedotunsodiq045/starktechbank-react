@@ -78,6 +78,10 @@ const NavBar = () => {
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
+                  <NavDropdown.Divider />
+                  <LinkContainer to="/change-password">
+                    <NavDropdown.Item>Change password</NavDropdown.Item>
+                  </LinkContainer>
                 </NavDropdown>
                 ) :
                 <></>

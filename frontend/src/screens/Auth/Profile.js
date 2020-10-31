@@ -11,8 +11,6 @@ const Profile = ({ location, history }) => {
   const [lastname, setLastname] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
 
   const dispatch = useDispatch()
@@ -44,12 +42,13 @@ const Profile = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if (password !== confirmPassword) {
-      setMessage('Passwords do not match')
-    } else {
-      dispatch(updateUserProfile({ id: user.data.id, username, firstname, lastname, email, phone, password}))
-      // DISPATCH UPDATE PROFILE
-    }
+    dispatch(updateUserProfile({ id: user.data.id, username, firstname, lastname, email, phone}))
+    // if (password !== confirmPassword) {
+    //   setMessage('Passwords do not match')
+    // } else {
+    //   dispatch(updateUserProfile({ id: user.data.id, username, firstname, lastname, email, phone}))
+    //   // DISPATCH UPDATE PROFILE
+    // }
   }
 
   return (
@@ -84,13 +83,13 @@ const Profile = ({ location, history }) => {
               <Form.Control type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
             </Form.Group>
 
-            <Form.Group controlId="password">
+            {/* <Form.Group controlId="password">
               <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
 
             <Form.Group controlId="confirmPassword">
               <Form.Control type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group controlId="formBasicEmail">
               <Button variant="primary" type="submit" block>

@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import PrimaryAccount from './screens/Accounts/PrimaryAccount'
 import SavingsAccount from './screens/Accounts/SavingsAccount'
 import ForgotPassword from './screens/Auth/ForgotPassword'
+import ChangePassword from './screens/Auth/ChangePassword'
 import Profile from './screens/Auth/Profile'
 import SignIn from './screens/Auth/SignIn'
 import SignUp from './screens/Auth/SignUp'
@@ -29,6 +30,7 @@ const App = () => {
 					<Route path="/signup" component={SignUp} />
 					<Route path="/home" component={Home} />
 					<Route path="/profile" component={Profile} />
+					<Route path="/change-password" component={ChangePassword} />
 					<Route path="/forgot-password" component={ForgotPassword} />
 					<Route path="/transactions/deposit" component={Deposit} />
 					<Route path="/transactions/withdraw" component={Withdraw} />
