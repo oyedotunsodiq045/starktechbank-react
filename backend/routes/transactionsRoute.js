@@ -1,43 +1,33 @@
 import express from 'express'
-const {
-  pryAcctDeposit,
-  pryAcctWithdrawal,
-  saveAcctDeposit,
-  saveAcctWithdrawal,
+import {
   transfer,
-  transferOut
-} = require('../controllers/transactionController');
+  transferOut,
+  deposit,
+  withdraw
+} from '../controllers/transactionController.js'
 
-const router = express.Router();
+const router = express.Router()
 
-const {
+import {
   protect
-} = require('../middleware/auth');
+} from '../middleware/auth.js'
 
 router.use(protect);
 
-// Primary Account Deposit
-// /api/v1/transactions/primary/deposit
-router.post('/primary/deposit', pryAcctDeposit);
-
-// Primary Account Withdrawal
-// /api/v1/transactions/primary/withdrawal
-router.post('/primary/withdrawal', pryAcctWithdrawal);
-
-// Savings Account Deposit
-// /api/v1/transactions/savings/deposit
-router.post('/savings/deposit', saveAcctDeposit);
-
-// Savings Account Withdrawal
-// /api/v1/transactions/savings/withdrawal
-router.post('/savings/withdrawal', saveAcctWithdrawal);
-
 // Transfer - Between Accounts (Primary -> Savings and Vice Versa)
-// /api/v1/transactions/transfer
+// /api/transactions/transfer
 router.post('/transfer', transfer);
 
 // Transfer - To Someone else
-// /api/v1/transactions/transfer/out
+// /api/transactions/transfer/out
 router.post('/transfer/out', transferOut);
+
+// Deposit v3
+// /api/transactions/deposit
+router.post('/deposit', deposit);
+
+// Withdraw v3
+// /api/transactions/withdrawal
+router.post('/withdrawal', withdraw);
   
 export default router

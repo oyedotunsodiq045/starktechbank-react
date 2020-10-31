@@ -10,12 +10,7 @@ import LoaderCard from '../components/utils/LoaderCard'
 import MessageCard from '../components/utils/MessageCard'
 import { getUserDetails } from '../actions/userActions'
 
-const Home =({ history }) => {
-  const [username, setUsername] = useState('')
-  const [firstname, setFirstname] = useState('')
-  const [lastname, setLastname] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
+const Home = ({ history }) => {
   const [primaryAccountNumber, setPrimaryAccountNumber] = useState('')
   const [primaryAccountBalance, setPrimaryAccountBalance] = useState('')
   const [savingsAccountNumber, setSavingsAccountNumber] = useState('')
@@ -37,11 +32,6 @@ const Home =({ history }) => {
       if (!user.data) {
         dispatch(getUserDetails('me'))
       } else {
-        setUsername(user.data.username)
-        setFirstname(user.data.firstname)
-        setLastname(user.data.lastname)
-        setEmail(user.data.email)
-        setPhone(user.data.phone)
         setPrimaryAccountNumber(user.data.primaryAccountId.primaryAccountNumber)
         setPrimaryAccountBalance(user.data.primaryAccountId.accountBalance)
         setSavingsAccountNumber(user.data.savingsAccountId.savingsAccountNumber)
@@ -49,17 +39,6 @@ const Home =({ history }) => {
       }
     }
   }, [dispatch, history, userInfo, user])
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault()
-  //   if (password !== confirmPassword) {
-  //     setMessage('Passwords do not match')
-  //   } else {
-  //     // dispatch(getUserDetails(username, firstname, lastname, email, phone, password))
-  //     // DISPATCH UPDATE PROFILE
-  //   }
-  // }
-
 
   return (
     <>

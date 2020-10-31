@@ -5,8 +5,7 @@ import connectDB from './config/db.js'
 
 // Route files
 import authRoute from './routes/authRoute.js'
-// import usersRoute from './routes/usersRoute.js'
-// import transactionsRoute from './routes/transactionsRoute.js'
+import transactionsRoute from './routes/transactionsRoute.js'
 import recipientsRoute from './routes/recipientsRoute.js'
 import usersRoute from './routes/usersRoute.js'
 
@@ -25,8 +24,7 @@ app.get('/', (req, res) => {
 
 // Mount routers
 app.use('/api/auth', authRoute);
-// app.use('/api/v1/users', usersRoute);
-// app.use('/api/v1/transactions', transactionsRoute);
+app.use('/api/transactions', transactionsRoute);
 app.use('/api/recipients', recipientsRoute)
 app.use('/api/users', usersRoute)
 

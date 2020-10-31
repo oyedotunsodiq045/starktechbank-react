@@ -1,6 +1,5 @@
 import crypto from 'crypto'
 import ErrorResponse from '../utils/errorResponse.js'
-// import asyncHandler from '../middleware/async'
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
 import PrimaryAccount from '../models/primaryAccountModel.js'

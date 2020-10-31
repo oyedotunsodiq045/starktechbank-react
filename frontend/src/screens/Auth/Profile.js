@@ -42,7 +42,7 @@ const Profile = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(updateUserProfile({ id: user.data.id, username, firstname, lastname, email, phone}))
+    dispatch(updateUserProfile({ id: user.data.id, username, firstname, lastname, email, phone }))
     // if (password !== confirmPassword) {
     //   setMessage('Passwords do not match')
     // } else {

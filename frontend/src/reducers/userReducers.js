@@ -15,7 +15,7 @@ import {
   // USER_UPDATE_PROFILE_RESET,
   USER_CHANGE_PASSWORD_REQUEST, 
   USER_CHANGE_PASSWORD_SUCCESS, 
-  USER_CHANGE_PASSWORD_FAIL, 
+  USER_CHANGE_PASSWORD_FAIL
 } from '../constants/userConstants'
 
 export const userLoginReducer = (state = {}, action) => {
