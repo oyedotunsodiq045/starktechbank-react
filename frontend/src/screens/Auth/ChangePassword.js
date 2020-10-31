@@ -6,8 +6,8 @@ import MessageCard from '../../components/utils/MessageCard'
 import { getUserDetails, changeUserPassword } from '../../actions/userActions'
 
 const ChangePassword = ({ location, history }) => {
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
   const [message, setMessage] = useState(null)
 
   const dispatch = useDispatch()
@@ -28,17 +28,18 @@ const ChangePassword = ({ location, history }) => {
       if (!user.data) {
         dispatch(getUserDetails('me'))
       } else {
-        setPassword(user.data.password)
+        setCurrentPassword(user.data.currentPassword)
+        setNewPassword(user.data.newPassword)
       }
     }
   }, [dispatch, history, userInfo, user])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if (password !== confirmPassword) {
-      setMessage('Passwords do not match')
+    if (currentPassword === newPassword) {
+      setMessage('Passwords should not match')
     } else {
-      dispatch(changeUserPassword({ id: user.data.id, password}))
+      dispatch(changeUserPassword({ id: user.data.id, currentPassword, newPassword}))
       // DISPATCH UPDATE PROFILE
     }
   }
@@ -55,11 +56,11 @@ const ChangePassword = ({ location, history }) => {
           <br />
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="password">
-              <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <Form.Control type="password" placeholder="Current Password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} />
             </Form.Group>
 
             <Form.Group controlId="confirmPassword">
-              <Form.Control type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+              <Form.Control type="password" placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
             </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
