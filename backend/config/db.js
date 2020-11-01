@@ -3,8 +3,8 @@ import colors from 'colors'
 
 const connectDB = async () => {
   try {
-    // const conn = await mongoose.connect(process.env.MONGO_URI, {
-    const conn = await mongoose.connect(process.env.LOCAL_MONGO_URI, {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+    // const conn = await mongoose.connect(process.env.LOCAL_MONGO_URI, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
