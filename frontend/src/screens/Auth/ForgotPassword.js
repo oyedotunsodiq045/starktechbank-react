@@ -23,7 +23,7 @@ const ForgotPassword = () => {
         </Form>
 
         <LinkContainer to="/">
-          <Card.Link>Sign in toyour StarkTechBank account?</Card.Link>
+          <Card.Link>Sign in to your StarkTechBank account?</Card.Link>
 				</LinkContainer>
 
         <LinkContainer to="/signup">
