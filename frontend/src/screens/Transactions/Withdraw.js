@@ -9,7 +9,7 @@ import { withdraw } from '../../actions/transactionActions'
 
 const Withdraw = ({ location, history }) => {
   const [type, setType] = useState('')
-  let [amount, setAmount] = useState(0)
+  let [amount, setAmount] = useState(Number)
   const [message, setMessage] = useState(null)
 
   const dispatch = useDispatch()
