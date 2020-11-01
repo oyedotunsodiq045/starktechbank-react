@@ -23,11 +23,14 @@ export const deposit = (type, amount) => async (dispatch, getState) => {
       }
     }
     
-    await axios.post(`/api/transactions/deposit`, { type, amount }, config)
+    const { data } = await axios.post(`/api/transactions/deposit`, { type, amount }, config)
 
     dispatch({ 
-      type: TRANSACTION_DEPOSIT_SUCCESS
+      type: TRANSACTION_DEPOSIT_SUCCESS,
+      payload: data,
     })
+
+    localStorage.setItem('userInfo', JSON.stringify(data))
 
   } catch (error) {
     dispatch({ 
@@ -53,12 +56,15 @@ export const withdraw = (type, amount) => async (dispatch, getState) => {
       }
     }
     
-    await axios.post(`/api/transactions/withdrawal`, { type, amount }, config)
+    const { data } = await axios.post(`/api/transactions/withdrawal`, { type, amount }, config)
 
     dispatch({ 
-      type: TRANSACTION_WITHDRAWAL_SUCCESS
+      type: TRANSACTION_WITHDRAWAL_SUCCESS,
+      payload: data,
     })
 
+    localStorage.setItem('userInfo', JSON.stringify(data))
+    
   } catch (error) {
     dispatch({ 
       type: TRANSACTION_WITHDRAWAL_FAIL,

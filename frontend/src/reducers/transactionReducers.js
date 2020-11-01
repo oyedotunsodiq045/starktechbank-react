@@ -15,7 +15,7 @@ export const transactionDepositReducer = (state = {}, action) => {
       return { loading: true }
 
     case TRANSACTION_DEPOSIT_SUCCESS:
-      return { loading: false, success: true }
+      return { loading: false, success: true, userInfo: action.payload }
 
     case TRANSACTION_DEPOSIT_FAIL:
       return { loading: false, error: action.payload }
@@ -34,7 +34,7 @@ export const transactionWithdrawalReducer = (state = {}, action) => {
       return { loading: true }
 
     case TRANSACTION_WITHDRAWAL_SUCCESS:
-      return { loading: false, success: true }
+      return { loading: false, success: true, userInfo: action.payload }
 
     case TRANSACTION_WITHDRAWAL_FAIL:
       return { loading: false, error: action.payload }

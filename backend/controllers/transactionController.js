@@ -319,7 +319,7 @@ const deposit = asyncHandler(async (req, res, next) => {
     );
   }
 
-  if (type == "Primary") {
+  if (type === "Primary") {
     // Deposit into Primary Account
     if (primaryAccount) {
       primaryAccount.accountBalance += amount;
@@ -344,7 +344,7 @@ const deposit = asyncHandler(async (req, res, next) => {
       data: transactions
     });
 
-  } else if (type == "Savings") {
+  } else if (type === "Savings") {
     // Deposit into Savings Account
     if (savingsAccount) {
       savingsAccount.accountBalance += amount;
